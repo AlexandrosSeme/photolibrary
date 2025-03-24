@@ -10,7 +10,8 @@ import { HeaderComponent } from './pages/header/header.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { PhotoDetailComponent } from './pages/photo-detail/photo-detail.component';
-
+import {MatCardModule} from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { PhotoDetailComponent } from './pages/photo-detail/photo-detail.componen
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
