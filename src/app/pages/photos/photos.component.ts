@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RequestsService } from 'src/app/services/requests.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
 
@@ -10,6 +10,9 @@ import { FavoriteService } from 'src/app/services/favorite.service';
 export class PhotosComponent implements OnInit {
   currentPage = 1;
   photos: any[] = [];
+  hasMore = true;
+  isLoading = false;
+  previousScrollY = 0;
 
   constructor(
     private req: RequestsService,
@@ -20,13 +23,31 @@ export class PhotosComponent implements OnInit {
     this.loadNext();
   }
 
-  loadNext() {
-    this.req.getPhotos(this.currentPage).subscribe((data) => {
-      data.forEach(photo => {
-        photo.isFavorite = this.favoriteService.isFavorite(photo);
-      });
-      this.photos.push(...data);
-      this.currentPage++;
+  loadNext(): void {
+    if (this.isLoading || !this.hasMore) return;
+    this.isLoading = true;
+    this.req.getPhotos(this.currentPage, 6).subscribe({
+      next: (data) => {
+        if (!data || data.length === 0) {
+          this.hasMore = false;
+          return;
+        }
+        const favorites = this.favoriteService.getFavorites();
+        const updatedPhotos = data.map(photo => (
+          {
+            ...photo, isFavorite: favorites.some(f => f.id === photo.id)
+          }));
+        const delay = Math.floor(Math.random() * 100) + 200;
+        setTimeout(() => {
+          this.photos.push(...updatedPhotos);
+          this.currentPage++;
+          this.isLoading = false;
+        }, delay);
+      },
+      error: (error) => {
+        console.error('Error fetching photos:', error);
+        this.isLoading = false;
+      }
     });
   }
 
@@ -37,4 +58,15 @@ export class PhotosComponent implements OnInit {
   trackByPhotoId(photo: any): number {
     return photo.id;
   }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const documentHeight = document.documentElement.scrollHeight;
+    const nearBottom = scrollPosition >= documentHeight - 1;
+    if (nearBottom && !this.isLoading && this.hasMore) {
+      this.loadNext();
+    }
+  }
+
 }

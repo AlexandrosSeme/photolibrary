@@ -1,1 +1,9 @@
-<p>photo-detail works!</p>
+<div class="photo-detail-container" *ngIf="photo">
+    <img [src]="photo.download_url" [alt]="photo.author">
+    <h3>{{ photo.author }}</h3>
+    <p>ID: {{ photo.id }}</p>
+  </div>
+  
+  <div class="load-btn">
+    <button mat-raised-button color="primary" (click)="toggleFavorite(photo)">Delete Photo</button>
+  </div>

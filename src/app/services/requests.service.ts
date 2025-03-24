@@ -11,7 +11,7 @@ export class RequestsService {
   constructor(private http: HttpClient) { }
 
 
-  getPhotos(page: number = 1, limit: number = 6): Observable<any[]> {
+  getPhotos(page: number, limit: number): Observable<any[]> {
     const url = `${this.baseUrl}?page=${page}&limit=${limit}`;
     return this.http.get<any[]>(url).pipe(
       tap((data) => console.log('Fetched:', data)),
