@@ -10,8 +10,6 @@
     <img mat-card-image [src]="photo.download_url" [alt]="photo.author" />
   </mat-card>
 </div>
-
-<!-- Loader ή "Load More" κουμπί, προαιρετικά -->
 <div class="loader" *ngIf="!isLoading">
   <mat-spinner diameter="100"></mat-spinner>
 </div>
