@@ -25,7 +25,6 @@ export class PhotosComponent implements OnInit {
       data.forEach(photo => {
         photo.isFavorite = this.favoriteService.isFavorite(photo);
       });
-
       this.photos.push(...data);
       this.currentPage++;
     });

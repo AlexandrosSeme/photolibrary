@@ -1,1 +1,11 @@
-<p>favorites works!</p>
+<h2 class="view-title">Favorites</h2>
+<div class="photo-grid">
+    <mat-card *ngFor="let photo of photos; trackBy: trackByPhotoId" class="photo-card">
+        <div class="photo-fav">
+            <button mat-mini-fab color="accent" (click)="toggleFavorite(photo)">
+                <mat-icon>favorite</mat-icon>
+            </button>
+        </div>
+        <img mat-card-image [src]="photo.download_url" [alt]="photo.author">
+    </mat-card>
+</div>

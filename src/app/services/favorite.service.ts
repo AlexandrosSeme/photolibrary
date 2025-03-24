@@ -25,16 +25,13 @@ export class FavoriteService {
   toggleFavorite(photo: any): boolean {
     const favorites = this.getFavorites();
     const index = favorites.findIndex(fav => fav.id === photo.id);
-
     let isNowFavorite = false;
-
     if (index > -1) {
       favorites.splice(index, 1);
     } else {
       favorites.push(photo);
       isNowFavorite = true;
     }
-
     this.saveFavorites(favorites);
     return isNowFavorite;
   }
