@@ -2,27 +2,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10%;
+    gap: 7%;
     padding: 1%;
-  }
-  
-  .photo-card {
-    width: 350px;
+}
+
+.photo-card {
+    width: 450px;
     border-radius: 8px;
     overflow: hidden;
-    padding-top: 2%;
     margin-bottom: 2%;
-  }
-  
-  .photo-card img {
+}
+
+.photo-card img {
     width: 100%;
     height: auto;
     display: block;
-  }
-  
+}
 
-  .load-btn {
+
+.load-btn {
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    margin-top: 1px;
 }
