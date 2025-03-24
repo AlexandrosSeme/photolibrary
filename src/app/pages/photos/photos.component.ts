@@ -8,10 +8,10 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./photos.component.scss']
 })
 export class PhotosComponent implements OnInit {
+  currentPage = 1;
+  photos: any[] = [];
 
   constructor(private req: RequestsService) { }
-
-
 
   ngOnInit(): void {
     this.req.getPhotos().subscribe(res => {
@@ -19,6 +19,11 @@ export class PhotosComponent implements OnInit {
     })
   }
 
-
+  loadNext() {
+    this.req.getPhotos(this.currentPage).subscribe((data) => {
+      this.photos.push(...data);
+      this.currentPage++;
+    });
+  }
 
 }
