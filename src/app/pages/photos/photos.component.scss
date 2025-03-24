@@ -7,11 +7,13 @@
 }
 
 .photo-card {
+    position: relative;
     width: 450px;
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 2%;
 }
+
 
 .photo-card img {
     width: 100%;
@@ -24,4 +26,11 @@
     display: flex;
     justify-content: center;
     margin-top: 1px;
+}
+
+.photo-fav {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
 }
