@@ -11,8 +11,9 @@ export class PhotosComponent implements OnInit {
   currentPage = 1;
   photos: any[] = [];
   hasMore = true;
+
+  isInitialLoading = true;
   isLoading = false;
-  previousScrollY = 0;
 
   constructor(
     private req: RequestsService,
@@ -30,23 +31,28 @@ export class PhotosComponent implements OnInit {
       next: (data) => {
         if (!data || data.length === 0) {
           this.hasMore = false;
+          this.isLoading = false;
           return;
         }
         const favorites = this.favoriteService.getFavorites();
-        const updatedPhotos = data.map(photo => (
-          {
-            ...photo, isFavorite: favorites.some(f => f.id === photo.id)
-          }));
+        const updatedPhotos = data.map(photo => ({
+          ...photo,
+          isFavorite: favorites.some(f => f.id === photo.id)
+        }));
         const delay = Math.floor(Math.random() * 100) + 200;
         setTimeout(() => {
           this.photos.push(...updatedPhotos);
           this.currentPage++;
           this.isLoading = false;
+          if (this.isInitialLoading) {
+            this.isInitialLoading = false;
+          }
         }, delay);
       },
       error: (error) => {
         console.error('Error fetching photos:', error);
         this.isLoading = false;
+        this.isInitialLoading = false;
       }
     });
   }
@@ -64,9 +70,8 @@ export class PhotosComponent implements OnInit {
     const scrollPosition = window.innerHeight + window.scrollY;
     const documentHeight = document.documentElement.scrollHeight;
     const nearBottom = scrollPosition >= documentHeight - 1;
-    if (nearBottom && !this.isLoading && this.hasMore) {
+    if (nearBottom && !this.isLoading && this.hasMore && !this.isInitialLoading) {
       this.loadNext();
     }
   }
-
 }

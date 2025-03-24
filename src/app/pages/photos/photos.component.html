@@ -1,5 +1,7 @@
 <h2 class="view-title">Photos</h2>
-
+<div class="loader" *ngIf="isInitialLoading">
+  <mat-spinner diameter="100"></mat-spinner>
+</div>
 <div class="photo-grid">
   <mat-card *ngFor="let photo of photos; trackBy: trackByPhotoId" class="photo-card">
     <div class="photo-fav">
@@ -10,6 +12,6 @@
     <img mat-card-image [src]="photo.download_url" [alt]="photo.author" />
   </mat-card>
 </div>
-<div class="loader" *ngIf="!isLoading">
+<div class="loader" *ngIf="isLoading && !isInitialLoading">
   <mat-spinner diameter="100"></mat-spinner>
 </div>
