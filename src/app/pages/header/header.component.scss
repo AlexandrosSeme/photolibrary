@@ -1,4 +1,21 @@
-.navbar-menu{
-    padding: 2%;
+.navbarMenu {
+    // padding: 2%;
     background-color: lightgray;
+}
+
+.navButtons {
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photos {
+    margin-right: 3%;
+    width: 10%;
+}
+
+.favorites {
+    margin-left: 3%;
+    width: 10%;
 }

@@ -1,0 +1,28 @@
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10%;
+    padding: 1%;
+  }
+  
+  .photo-card {
+    width: 350px;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-top: 2%;
+    margin-bottom: 2%;
+  }
+  
+  .photo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+
+  .load-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}

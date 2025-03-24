@@ -1,5 +1,14 @@
-<mat-card>
-    <mat-card-content>Simple card</mat-card-content>
-</mat-card>
-
-<button (click)="loadNext()">Load Next Photos</button>
+<div class="photo-grid">
+    <mat-card *ngFor="let photo of photos" class="photo-card">
+      <img mat-card-image [src]="photo.download_url" [alt]="photo.author">
+      <mat-card-content>
+        <p><strong>{{ photo.author }}</strong></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  
+  <div class="load-btn">
+    <button mat-raised-button color="primary" (click)="loadNext()">Load Next Photos</button>
+  </div>
+  

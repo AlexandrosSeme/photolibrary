@@ -14,9 +14,10 @@ export class PhotosComponent implements OnInit {
   constructor(private req: RequestsService) { }
 
   ngOnInit(): void {
-    this.req.getPhotos().subscribe(res => {
-      console.log(res)
-    })
+    // this.req.getPhotos().subscribe(res => {
+    //   console.log(res)
+    // })
+    this.loadNext();
   }
 
   loadNext() {
