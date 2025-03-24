@@ -10,8 +10,9 @@ import { HeaderComponent } from './pages/header/header.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { PhotoDetailComponent } from './pages/photo-detail/photo-detail.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    HttpClientModule 
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
