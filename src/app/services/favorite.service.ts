@@ -23,6 +23,7 @@ export class FavoriteService {
   }
 
   toggleFavorite(photo: any): boolean {
+    console.log(photo)
     const favorites = this.getFavorites();
     const index = favorites.findIndex(fav => fav.id === photo.id);
     let isNowFavorite = false;

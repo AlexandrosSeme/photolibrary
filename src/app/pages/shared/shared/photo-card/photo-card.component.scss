@@ -1,0 +1,30 @@
+.photo-card {
+    position: relative;
+    width: 450px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10%;
+  
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  
+  .photo-fav {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+  }
+  
+  .photo-card.clickable {
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out;
+  
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+  }
+  

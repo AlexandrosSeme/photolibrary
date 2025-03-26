@@ -13,6 +13,8 @@ import { PhotoDetailComponent } from './pages/photo-detail/photo-detail.componen
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SharedModule } from './pages/shared/shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatCardModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

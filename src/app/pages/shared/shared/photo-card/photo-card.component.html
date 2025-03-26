@@ -1,0 +1,16 @@
+<mat-card
+  class="photo-card"
+  [routerLink]="enableRouting ? ['/photos', photo.id] : null"
+  [class.clickable]="enableRouting">
+
+  <div class="photo-fav" *ngIf="showDelete || showFavorite">
+    <button mat-mini-fab color="accent" (click)="toggleFavorite($event)">
+      <mat-icon *ngIf="showDelete">delete</mat-icon>
+      <mat-icon *ngIf="showFavorite">
+        {{ photo.isFavorite ? 'favorite' : 'favorite_border' }}
+      </mat-icon>
+    </button>
+  </div>
+
+  <img mat-card-image [src]="photo.download_url" [alt]="photo.author" />
+</mat-card>

@@ -18,7 +18,7 @@ export class PhotosComponent implements OnInit {
   constructor(
     private req: RequestsService,
     private favoriteService: FavoriteService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadNext();
@@ -39,6 +39,7 @@ export class PhotosComponent implements OnInit {
           ...photo,
           isFavorite: favorites.some(f => f.id === photo.id)
         }));
+
         const delay = Math.floor(Math.random() * 100) + 200;
         setTimeout(() => {
           this.photos.push(...updatedPhotos);
@@ -58,6 +59,7 @@ export class PhotosComponent implements OnInit {
   }
 
   toggleFavorite(photo: any) {
+    console.log(photo)
     photo.isFavorite = this.favoriteService.toggleFavorite(photo);
   }
 
