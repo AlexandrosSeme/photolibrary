@@ -1,14 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PhotosComponent } from './photos.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PhotosComponent', () => {
   let component: PhotosComponent;
   let fixture: ComponentFixture<PhotosComponent>;
-
+  
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PhotosComponent]
+      declarations: [PhotosComponent],
+      imports: [MatSnackBarModule,HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(PhotosComponent);
     component = fixture.componentInstance;
