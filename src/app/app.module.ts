@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from './pages/shared/shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SharedModule } from './pages/shared/shared/shared.module';
     MatCardModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    SharedModule
+    SharedModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

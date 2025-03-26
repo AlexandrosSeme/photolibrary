@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RequestsService } from 'src/app/services/requests.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-photos',
@@ -17,7 +18,8 @@ export class PhotosComponent implements OnInit {
 
   constructor(
     private req: RequestsService,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private notify: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class PhotosComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching photos:', error);
+        this.notify.showError('Failed to load photos. Please try again.');
         this.isLoading = false;
         this.isInitialLoading = false;
       }
@@ -62,6 +65,9 @@ export class PhotosComponent implements OnInit {
     const updatedFavorite = this.favoriteService.toggleFavorite(photo);
     this.photos = this.photos.map(p =>
       p.id === photo.id ? { ...p, isFavorite: updatedFavorite } : p
+    );
+    this.notify.showSuccess(
+      updatedFavorite ? 'Added to favorites' : 'Removed from favorites'
     );
   }
 
