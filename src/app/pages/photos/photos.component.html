@@ -1,6 +1,7 @@
 <h2 class="view-title">Photos</h2>
 <div class="photo-grid">
-  <app-photo-card *ngFor="let photo of photos" [photo]="photo" [showFavorite]="true" [enableRouting]="false"
+  <app-photo-card *ngFor="let photo of photos" 
+  [photo]="photo" [showFavorite]="true" [enableRouting]="false"
     (favoriteToggled)="toggleFavorite(photo)">
   </app-photo-card>
 

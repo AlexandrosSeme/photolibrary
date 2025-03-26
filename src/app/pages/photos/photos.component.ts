@@ -18,7 +18,7 @@ export class PhotosComponent implements OnInit {
   constructor(
     private req: RequestsService,
     private favoriteService: FavoriteService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadNext();
@@ -58,10 +58,13 @@ export class PhotosComponent implements OnInit {
     });
   }
 
-  toggleFavorite(photo: any) {
-    console.log(photo)
-    photo.isFavorite = this.favoriteService.toggleFavorite(photo);
+  toggleFavorite(photo: any): void {
+    const updatedFavorite = this.favoriteService.toggleFavorite(photo);
+    this.photos = this.photos.map(p =>
+      p.id === photo.id ? { ...p, isFavorite: updatedFavorite } : p
+    );
   }
+
 
   trackByPhotoId(photo: any): number {
     return photo.id;

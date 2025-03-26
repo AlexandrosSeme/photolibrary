@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-photo-card',
   templateUrl: './photo-card.component.html',
-  styleUrls: ['./photo-card.component.scss']
+  styleUrls: ['./photo-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush 
 })
 export class PhotoCardComponent {
   @Input() photo: any;
