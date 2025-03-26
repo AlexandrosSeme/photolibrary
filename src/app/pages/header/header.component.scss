@@ -1,5 +1,4 @@
 .navbarMenu {
-    // padding: 2%;
     background-color: lightgray;
 }
 
@@ -10,12 +9,41 @@
     align-items: center;
 }
 
+.photos,
+.favorites {
+    width: 10%;
+    transition: all 0.3s ease;
+}
+
 .photos {
     margin-right: 3%;
-    width: 10%;
 }
 
 .favorites {
     margin-left: 3%;
-    width: 10%;
 }
+
+.navButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    background-color: #ccc;
+    padding: 2rem;
+  }
+  
+  .toggle-btn {
+    background-color: #e0e0e0;
+    color: #333;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .toggle-btn.active-toggle {
+    background-color: #3f51b5 !important;
+    color: white !important;
+  }
+  
